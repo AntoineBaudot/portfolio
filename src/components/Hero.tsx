@@ -44,10 +44,11 @@ export default function Hero() {
     // Let's try to keep it simple: Fixed position, left matches navbar padding.
 
     // Image animation: 
-    // 0-300: Slide up (100 -> 0)
-    // 300-450: Stick (0) - Shortened stick phase
-    // 450+: Scroll away (0 -> -1000) - 1:1 sync with scroll
-    const imageY = useTransform(scrollY, [0, 300, 450, 1450], [100, 0, 0, -1000]);
+    // Start from lower position (accounting for About section position)
+    // 0-300: Slide up from below viewport
+    // 300-800: Stick at aligned position
+    // 800+: Scroll away with 1:1 sync
+    const imageY = useTransform(scrollY, [0, 300, 800, 1800], ["10vh", "0vh", "0vh", "-100vh"]);
 
     useEffect(() => {
         const animateText = async () => {
@@ -97,7 +98,7 @@ export default function Hero() {
                             />
                         </div>
                         <h2 className="text-3xl md:text-5xl font-medium text-muted">
-                            Based in Paris 🇫🇷
+                            Based in the City of Lights, Paris.
                         </h2>
                     </motion.div>
 
@@ -116,25 +117,6 @@ export default function Hero() {
                     </motion.div>
                 </div>
             </div>
-
-            {/* Fixed Hero Image */}
-            <motion.div
-                className="fixed bottom-0 right-6 md:right-12 lg:right-24 z-0 w-[40vw] md:w-[30vw] lg:w-[25vw] max-w-[500px] pointer-events-none"
-                style={{ y: imageY }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-            >
-                <img
-                    src="/images/me.jpg"
-                    alt="Antoine Baudot"
-                    className="w-full h-auto object-cover mask-image-gradient"
-                    style={{
-                        maskImage: "linear-gradient(to top, black 50%, transparent 100%)",
-                        WebkitMaskImage: "linear-gradient(to top, black 50%, transparent 100%)"
-                    }}
-                />
-            </motion.div>
 
             {/* Subtle Background Gradient */}
             <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />

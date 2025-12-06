@@ -4,22 +4,34 @@ import { motion } from "framer-motion";
 
 const experiences = [
     {
-        company: "Tech Company A",
-        role: "Senior Product Manager",
-        period: "2023 - Present",
-        description: "Leading the core product team, focused on user retention and growth.",
+        company: "Capgemini",
+        role: "Product Manager CDI",
+        period: "April 2024 - Present",
+        description: "Paris, France",
     },
     {
-        company: "Startup B",
-        role: "Product Manager",
-        period: "2021 - 2023",
-        description: "Managed the end-to-end product lifecycle for a B2B SaaS platform.",
+        company: "Retreeb",
+        role: "Product Manager Alternance",
+        period: "November 2022 - December 2023",
+        description: "Paris, France",
     },
     {
-        company: "Agency C",
-        role: "Product Owner",
-        period: "2019 - 2021",
-        description: "Collaborated with clients to define requirements and deliver custom solutions.",
+        company: "Skaleet (Ex-TagPay)",
+        role: "Product Owner Stage",
+        period: "May 2022 - November 2022",
+        description: "Paris, France",
+    },
+    {
+        company: "Algoan",
+        role: "Product Owner Stage",
+        period: "May 2021 - October 2021",
+        description: "Paris, France",
+    },
+    {
+        company: "Artsper",
+        role: "Product Owner Stage",
+        period: "July 2020 - September 2020",
+        description: "Paris, France",
     },
 ];
 

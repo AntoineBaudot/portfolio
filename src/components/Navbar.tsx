@@ -20,10 +20,24 @@ export default function Navbar() {
         setScrolled(latest > 50);
     });
 
-    // Animation Logic for Logo
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    // Animation Logic for Logo - Conditional
     const scrollRange = [0, 150];
-    const fontSize = useTransform(scrollY, scrollRange, ["14vw", "1.25rem"]);
-    const top = useTransform(scrollY, scrollRange, ["8rem", "0rem"]);
+    const fontSizeAnim = useTransform(scrollY, scrollRange, ["14vw", "1.25rem"]);
+    const topAnim = useTransform(scrollY, scrollRange, ["8rem", "0rem"]);
+
+    const fontSize = isMobile ? "1.25rem" : fontSizeAnim;
+    const top = isMobile ? "0rem" : topAnim;
 
     return (
         <motion.nav
