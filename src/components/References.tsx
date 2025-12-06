@@ -9,20 +9,19 @@ const logos = [
     { name: 'Algoan', src: '/logos/algoan.svg' },
     { name: 'Artsper', src: '/logos/artsper.svg' },
     { name: 'Colissimo', src: '/logos/colissimo.png' },
-
     { name: 'La Poste', src: '/logos/laposte.svg' },
 ];
 
 export default function References() {
     return (
-        <section className="py-20 bg-white">
+        <section className="py-40">
             <div className="container mx-auto px-6">
                 <h2 className="text-2xl font-bold text-center mb-12 text-black/80 tracking-wider">
                     TRUSTED BY
                 </h2>
                 <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-80">
                     {logos.map((logo) => (
-                        <div key={logo.name} className={`relative h-12 w-32 md:w-40 transition-all duration-300 group ${logo.name === 'Retreeb' || logo.name === 'Artsper' ? '' : 'grayscale brightness-0 hover:grayscale-0 hover:brightness-100'} ${logo.name === 'Capgemini' ? 'brightness-0' : ''}`}>
+                        <div key={logo.name} className={`relative h-12 w-32 md:w-40 transition-all duration-300 group ${logo.name === 'Retreeb' || logo.name === 'Artsper' || logo.name === 'Ministère de l\'Économie' ? '' : 'grayscale brightness-0 hover:grayscale-0 hover:brightness-100'} ${logo.name === 'Capgemini' ? 'brightness-0' : ''}`}>
                             <Image
                                 src={logo.src}
                                 alt={`${logo.name} logo`}

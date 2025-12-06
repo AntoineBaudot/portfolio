@@ -23,7 +23,7 @@ export default function Contact() {
 
                 <div className="flex flex-col md:flex-row gap-12 items-start">
                     <a
-                        href="mailto:hello@example.com"
+                        href="mailto:hello@antoinebaudot.com"
                         className="text-2xl md:text-3xl hover:text-primary transition-colors border-b border-white/20 pb-2 hover:border-primary"
                     >
                         hello@antoinebaudot.com
@@ -31,13 +31,15 @@ export default function Contact() {
 
                     <div className="flex gap-6">
                         {[
-                            { icon: Linkedin, href: "#" },
-                            { icon: Twitter, href: "#" },
-                            { icon: Github, href: "#" },
+                            { icon: Linkedin, href: "https://www.linkedin.com/in/antoinebaudot/" },
+                            { icon: Twitter, href: "https://twitter.com/" },
+                            { icon: Github, href: "https://github.com/AntoineBaudot" },
                         ].map((social, index) => (
                             <a
                                 key={index}
                                 href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="text-muted hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
                             >
                                 <social.icon size={24} />

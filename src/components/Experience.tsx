@@ -52,19 +52,19 @@ export default function Experience() {
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
-                            className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16 border-t border-white/10 pt-16"
+                            className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16 border-t border-current/10 pt-16"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
                             <div>
-                                <h3 className="text-2xl font-semibold text-white mb-2">{exp.company}</h3>
-                                <span className="text-muted">{exp.period}</span>
+                                <h3 className="text-2xl font-semibold mb-2">{exp.company}</h3>
+                                <span className="opacity-60">{exp.period}</span>
                             </div>
                             <div>
-                                <h4 className="text-xl font-medium text-white mb-4">{exp.role}</h4>
-                                <p className="text-muted text-lg leading-relaxed">{exp.description}</p>
+                                <h4 className="text-xl font-medium mb-4">{exp.role}</h4>
+                                <p className="opacity-80 text-lg leading-relaxed">{exp.description}</p>
                             </div>
                         </motion.div>
                     ))}

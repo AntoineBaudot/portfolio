@@ -13,17 +13,17 @@ export default function About() {
         offset: ['start 0.9', 'end 0.5']
     });
 
-    // Precise Exit Logic
-    // Trigger when bottom of container (text) hits bottom of image position (20vh from bottom = 0.8 from top)
+    // Exit Logic: Image and text move up together
+    // Trigger when bottom of text (last line) aligns with bottom of image (at 2vh from bottom = 98vh from top)
     const { scrollYProgress: exitProgress } = useScroll({
         target: container,
-        offset: ['end 0.8', 'end 0']
+        offset: ['end 0.98', 'end 0']
     });
 
     // Map exit progress to upward movement
-    // When text moves from 0.8 (image bottom) to 0 (top), it travels 80vh.
-    // Image should match that travel.
-    const exitY = useTransform(exitProgress, [0, 1], ["0vh", "-80vh"]);
+    // When text bottom reaches image bottom (98vh), start moving everything up
+    // Continue until text exits the top, bringing image along
+    const exitY = useTransform(exitProgress, [0, 1], ["0vh", "-100vh"]);
 
     // Image Entrance Logic - Global Scroll
     // Slide Up effect from Hero
@@ -44,38 +44,28 @@ export default function About() {
     const totalWords = words1.length + words2.length;
 
     return (
-        <section id="about" className="py-32 px-6 md:px-12 lg:px-24 relative z-10">
+        <section id="about" className="py-40 px-6 md:px-12 lg:px-24 relative z-10">
             <div className="max-w-2xl md:max-w-[55vw] lg:max-w-[50vw] xl:max-w-[55vw] 2xl:max-w-[60vw]">
-                <motion.span
-                    className="text-primary font-medium tracking-wider mb-8 block text-sm"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    ABOUT ME
-                </motion.span>
-                <div ref={container} className="space-y-8 text-2xl md:text-3xl font-bold leading-relaxed text-white">
+                {/* Spacer to maintain layout after removing title */}
+                <div className="h-20" aria-hidden="true" />
+                <div ref={container} className="space-y-8 text-2xl md:text-3xl font-bold leading-relaxed">
                     <Paragraph words={words1} startIndex={0} totalWords={totalWords} scrollYProgress={scrollYProgress} />
                     <Paragraph words={words2} startIndex={words1.length} totalWords={totalWords} scrollYProgress={scrollYProgress} />
                 </div>
             </div>
 
-            {/* Hero Image - Moved to About for better sync */}
+            {/* Hero Image - synced with scroll */}
             <motion.div
-                className="fixed bottom-[20vh] right-6 md:right-12 lg:right-24 z-0 w-[40vw] md:w-[30vw] lg:w-[25vw] max-w-[500px] pointer-events-none"
+                className="fixed bottom-[2vh] right-6 md:right-12 lg:right-24 z-10 w-[24vw] md:w-[18vw] lg:w-[15vw] max-w-[300px] pointer-events-none"
                 style={{ y: imageY }}
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
             >
                 <img
-                    src="/images/me.jpg"
+                    src="/hero-avatar.png"
                     alt="Antoine Baudot"
-                    className="w-full h-auto object-cover mask-image-gradient"
-                    style={{
-                        maskImage: "linear-gradient(to top, black 50%, transparent 100%)",
-                        WebkitMaskImage: "linear-gradient(to top, black 50%, transparent 100%)"
-                    }}
+                    className="w-full h-auto object-cover"
                 />
             </motion.div>
         </section>

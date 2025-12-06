@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import SmoothScroll from "@/components/SmoothScroll";
+
 
 const octarine = localFont({
     src: [
@@ -36,7 +38,7 @@ const octarine = localFont({
 
 export const metadata: Metadata = {
     title: "Antoine Baudot - Product Manager",
-    description: "Portfolio showcasing my experience, skills, and projects.",
+    description: "Product Owner & Manager based in Paris specializing in SaaS, Fintech and Mobile products.",
 };
 
 export default function RootLayout({
@@ -47,8 +49,10 @@ export default function RootLayout({
     return (
         <html lang="en" className={`dark ${octarine.variable}`}>
             <body className="font-sans bg-background text-foreground antialiased">
-                <Navbar />
-                {children}
+                <SmoothScroll>
+                    <Navbar />
+                    {children}
+                </SmoothScroll>
             </body>
         </html>
     );
