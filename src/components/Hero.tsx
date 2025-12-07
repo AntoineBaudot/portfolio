@@ -72,6 +72,12 @@ export default function Hero() {
         }
     });
 
+    // Text layers parallax
+    // Text layers parallax
+    const textY = useTransform(scrollY, [400, 900], [0, 100]); // Moves slower
+    const buttonY = useTransform(scrollY, [400, 900], [0, -50]); // Moves faster (slightly up against scroll)
+
+
     return (
         <section className="min-h-screen flex flex-col px-6 md:px-12 lg:px-24 pt-32 relative overflow-hidden">
 
@@ -87,6 +93,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                         className="mb-12"
+                        style={{ y: textY }}
                     >
                         <div className="text-3xl md:text-5xl font-medium text-white mb-2 h-[1.5em] flex items-center">
                             <span>Product&nbsp;</span>
@@ -106,6 +113,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                        style={{ y: buttonY }}
                     >
                         <a
                             href="#contact"
@@ -115,6 +123,8 @@ export default function Hero() {
                             <ArrowRight size={20} />
                         </a>
                     </motion.div>
+
+
                 </div>
             </div>
 

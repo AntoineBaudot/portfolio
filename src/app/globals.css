@@ -25,6 +25,8 @@
     --font-sans: var(--font-sans);
 }
 
+
+
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #050505;

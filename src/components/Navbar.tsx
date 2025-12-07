@@ -8,6 +8,8 @@ import { usePathname } from "next/navigation";
 import { Download } from "lucide-react";
 
 
+import { useLenis } from "lenis/react";
+
 const navLinks = [
     { name: "Experience", href: "/#experience" },
     { name: "Work", href: "/#projects" },
@@ -21,6 +23,22 @@ export default function Navbar() {
     const { scrollY, scrollYProgress } = useScroll();
     const pathname = usePathname();
     const isHome = pathname === "/";
+    const lenis = useLenis();
+
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (isHome && href.startsWith("/#")) {
+            e.preventDefault();
+            const targetId = href.replace("/#", "");
+            const element = document.getElementById(targetId);
+            if (element) {
+                lenis?.scrollTo(element);
+            }
+        } else if (isHome && href === "/") {
+            e.preventDefault();
+            lenis?.scrollTo(0);
+        }
+    };
+
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -74,23 +92,23 @@ export default function Navbar() {
 
     // Dynamic Color Logic (Synced with DynamicBackgroundWrapper)
     // Black -> White -> Black text
-    // Thresholds: [0, 0.15, 0.25, 0.8, 0.9, 1]
+    // Thresholds: [0, 0.22, 0.32, 0.8, 0.9, 1]
     const color = useTransform(
         scrollYProgress,
-        [0, 0.15, 0.25, 0.8, 0.9, 1],
+        [0, 0.21, 0.31, 0.8, 0.9, 1],
         ["#ffffff", "#ffffff", "#050505", "#050505", "#ffffff", "#ffffff"]
     );
 
     // CV Button Colors (Reverse of text)
     const buttonBg = useTransform(
         scrollYProgress,
-        [0, 0.15, 0.25, 0.8, 0.9, 1],
+        [0, 0.21, 0.31, 0.8, 0.9, 1],
         ["#ffffff", "#ffffff", "#050505", "#050505", "#ffffff", "#ffffff"]
     );
 
     const buttonText = useTransform(
         scrollYProgress,
-        [0, 0.15, 0.25, 0.8, 0.9, 1],
+        [0, 0.21, 0.31, 0.8, 0.9, 1],
         ["#050505", "#050505", "#ffffff", "#ffffff", "#050505", "#050505"]
     );
 
@@ -123,7 +141,7 @@ export default function Navbar() {
                 }}
                 className="font-bold leading-none tracking-tighter origin-top-left whitespace-nowrap pointer-events-none md:pointer-events-auto"
             >
-                <Link href="/" className="pointer-events-auto">
+                <Link href="/" className="pointer-events-auto" onClick={(e) => handleLinkClick(e, "/")}>
                     <motion.h1 style={{ fontSize }}>
                         ImAntoine
                     </motion.h1>
@@ -143,6 +161,7 @@ export default function Navbar() {
                             key={link.name}
                             href={link.href}
                             className="hover:opacity-70 transition-opacity relative"
+                            onClick={(e) => handleLinkClick(e, link.href)}
                         >
                             {link.name}
                             {activeSection === link.href.replace("/#", "") && isHome && (
@@ -165,7 +184,7 @@ export default function Navbar() {
                     }}
                     className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm hover:opacity-80 transition-opacity pointer-events-auto"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    animate={{ opacity: (!isHome || scrolled) ? 1 : 0 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >

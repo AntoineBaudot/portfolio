@@ -13,13 +13,13 @@ export default function DynamicBackground({ children }: { children: ReactNode })
     // 0.9: Fully Black (Contact starts)
     const backgroundColor = useTransform(
         scrollYProgress,
-        [0, 0.15, 0.25, 0.8, 0.9, 1],
+        [0, 0.12, 0.16, 0.9, 0.95, 1],
         ["#0a0a0a", "#0a0a0a", "#ffffff", "#ffffff", "#0a0a0a", "#0a0a0a"]
     );
 
     const textColor = useTransform(
         scrollYProgress,
-        [0, 0.15, 0.25, 0.8, 0.9, 1],
+        [0, 0.12, 0.16, 0.9, 0.95, 1],
         ["#ffffff", "#ffffff", "#000000", "#000000", "#ffffff", "#ffffff"]
     );
 

@@ -47,7 +47,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`dark ${octarine.variable}`}>
+        <html lang="en" className={`dark ${octarine.variable}`} suppressHydrationWarning>
             <body className="font-sans bg-background text-foreground antialiased">
                 <SmoothScroll>
                     <Navbar />

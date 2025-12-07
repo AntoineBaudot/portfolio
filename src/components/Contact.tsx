@@ -1,11 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Mail, Linkedin, Twitter, Github } from "lucide-react";
+import { useRef } from "react";
 
 export default function Contact() {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ["start end", "end start"]
+    });
+
+    const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
     return (
-        <section id="contact" className="py-32 px-6 md:px-12 lg:px-24">
+        <section id="contact" className="py-32 px-6 md:px-12 lg:px-24" ref={container}>
             <motion.div
                 className="max-w-4xl"
                 initial={{ opacity: 0, y: 20 }}
@@ -16,10 +25,10 @@ export default function Contact() {
                     CONTACT
                 </span>
 
-                <h2 className="text-5xl md:text-7xl font-bold mb-12 leading-tight">
+                <motion.h2 style={{ y: titleY }} className="text-5xl md:text-7xl font-bold mb-12 leading-tight">
                     Let's work <br />
                     <span className="text-muted">together.</span>
-                </h2>
+                </motion.h2>
 
                 <div className="flex flex-col md:flex-row gap-12 items-start">
                     <a

@@ -48,7 +48,7 @@ export default function About() {
             <div className="max-w-2xl md:max-w-[55vw] lg:max-w-[50vw] xl:max-w-[55vw] 2xl:max-w-[60vw]">
                 {/* Spacer to maintain layout after removing title */}
                 <div className="h-20" aria-hidden="true" />
-                <div ref={container} className="space-y-8 text-2xl md:text-3xl font-bold leading-relaxed">
+                <div ref={container} className="space-y-24 text-2xl md:text-3xl font-bold leading-relaxed">
                     <Paragraph words={words1} startIndex={0} totalWords={totalWords} scrollYProgress={scrollYProgress} />
                     <Paragraph words={words2} startIndex={words1.length} totalWords={totalWords} scrollYProgress={scrollYProgress} />
                 </div>
@@ -56,7 +56,7 @@ export default function About() {
 
             {/* Hero Image - synced with scroll */}
             <motion.div
-                className="fixed bottom-[2vh] right-6 md:right-12 lg:right-24 z-10 w-[24vw] md:w-[18vw] lg:w-[15vw] max-w-[300px] pointer-events-none"
+                className="fixed bottom-[2vh] right-6 md:right-12 lg:right-24 z-10 w-[24vw] md:w-[18vw] lg:w-[15vw] max-w-[300px] pointer-events-none mr-[2%]"
                 style={{ y: imageY }}
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
