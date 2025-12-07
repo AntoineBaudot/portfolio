@@ -6,31 +6,31 @@ import { useRef } from "react";
 const experiences = [
     {
         company: "Capgemini",
-        role: "Product Manager CDI",
+        role: "Product Manager",
         period: "Apr 2024 - Present",
         description: "Leading product initiatives for enterprise clients, focusing on AI-powered solutions and digital transformation projects. Collaborating with cross-functional teams to deliver scalable platforms.",
     },
     {
         company: "Retreeb",
-        role: "Product Manager Alternance",
+        role: "Product Manager",
         period: "Nov 2022 - Dec 2023",
         description: "Led the product redesign initiative, improving user engagement by 40%. Managed the roadmap and coordinated with engineering teams to deliver new features.",
     },
     {
         company: "Skaleet (Ex-TagPay)",
-        role: "Product Owner Stage",
+        role: "Product Owner",
         period: "May 2022 - Nov 2022",
         description: "Managed the backlog and roadmap for the core banking platform components. Worked closely with stakeholders to prioritize features and ensure timely delivery.",
     },
     {
         company: "Algoan",
-        role: "Product Owner Stage",
+        role: "Product Owner",
         period: "May 2021 - Oct 2021",
         description: "Collaborated with data scientists to implement credit scoring algorithms. Optimized user flows and improved the loan application process.",
     },
     {
         company: "Artsper",
-        role: "Product Owner Stage",
+        role: "Product Owner",
         period: "Jul 2020 - Sep 2020",
         description: "Optimized the artist onboarding flow, reducing drop-off rates. Conducted user research and implemented data-driven improvements.",
     },
@@ -72,7 +72,7 @@ const TimelineItem = ({ item, index }: { item: any, index: number }) => {
                     <p className="text-xl text-neutral-400 font-medium mb-1">
                         {item.role}
                     </p>
-                    <p className="text-sm font-mono text-neutral-500 mb-4 inline-block">
+                    <p className="text-sm text-neutral-500 mb-4 inline-block">
                         {item.period}
                     </p>
                     <p className="text-neutral-300 leading-relaxed text-base">
